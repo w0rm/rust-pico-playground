@@ -18,6 +18,8 @@ sh1106 = "0.5.0"
 embedded-graphics = "0.8"
 fugit = "0.3"
 panic-halt = "0.2"
+embedded-mogeefont = { git = "https://github.com/w0rm/embedded-mogeefont.git", rev = "751b04bb7a08eb5d6148f7c49bceef710aa71be3" }
+# embedded-mogeefont = { path = "../embedded-mogeefont" }
 
 # cargo build/run
 [profile.dev]

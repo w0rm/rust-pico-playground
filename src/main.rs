@@ -6,12 +6,12 @@ extern crate alloc;
 
 use embedded_alloc::Heap;
 use embedded_graphics::{
-    mono_font::{ascii::FONT_9X18_BOLD, MonoTextStyleBuilder},
     pixelcolor::BinaryColor,
     prelude::*,
     text::{Baseline, Text},
 };
 use embedded_hal::blocking::delay::DelayMs;
+use embedded_mogeefont::TextStyle;
 use fugit::RateExtU32;
 use panic_halt as _; // exit the program if a panic occurs
 use rp_pico::entry;
@@ -75,11 +75,6 @@ fn does_not_have_to_be_main() -> ! {
     let mut display: GraphicsMode<_> = Builder::new().connect_i2c(i2c).into();
     display.init().unwrap();
 
-    let text_style = MonoTextStyleBuilder::new()
-        .font(&FONT_9X18_BOLD)
-        .text_color(BinaryColor::On)
-        .build();
-
     let mut timer = hal::Timer::new(pac.TIMER, &mut pac.RESETS, &clocks);
     let mut count = 0;
 
@@ -89,9 +84,13 @@ fn does_not_have_to_be_main() -> ! {
         count += 1;
 
         Text::with_baseline(
-            format!("Counter: {}", count).as_str(),
-            Point::new(0, 32),
-            text_style,
+            format!(
+                "There is so much screen\nspace for MogeeFont! Enough\nto fit a haiku. Should I make\nit scroll through a book?\nDynamic counter: {}",
+                count
+            )
+            .as_str(),
+            Point::new(10, 5),
+            TextStyle::new(BinaryColor::On),
             Baseline::Top,
         )
         .draw(&mut display)
