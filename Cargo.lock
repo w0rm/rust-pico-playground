@@ -203,9 +203,9 @@ dependencies = [
 [[package]]
 name = "embedded-mogeefont"
 version = "0.1.0"
-source = "git+https://github.com/w0rm/embedded-mogeefont.git?rev=751b04bb7a08eb5d6148f7c49bceef710aa71be3#751b04bb7a08eb5d6148f7c49bceef710aa71be3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "be35c74f8aef6e39e191e9296de12e3fb4ab210d95011ce1aeb56556690fb632"
 dependencies = [
- "az",
  "embedded-graphics",
 ]
 

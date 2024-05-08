@@ -11,7 +11,7 @@ use embedded_graphics::{
     text::{Baseline, Text},
 };
 use embedded_hal::blocking::delay::DelayMs;
-use embedded_mogeefont::TextStyle;
+use embedded_mogeefont::MogeeTextStyle;
 use fugit::RateExtU32;
 use panic_halt as _; // exit the program if a panic occurs
 use rp_pico::entry;
@@ -90,7 +90,7 @@ fn does_not_have_to_be_main() -> ! {
             )
             .as_str(),
             Point::new(10, 5),
-            TextStyle::new(BinaryColor::On),
+            MogeeTextStyle::new(BinaryColor::On),
             Baseline::Top,
         )
         .draw(&mut display)
